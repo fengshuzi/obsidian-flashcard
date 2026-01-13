@@ -17,7 +17,8 @@
         "prettier": "prettier",
         "eslint": "eslint",
         "jest": "jest",
-        "auto-changelog": "auto-changelog"
+        "auto-changelog": "auto-changelog",
+        "release": "node release.mjs"
     },
     "keywords": [
         "obsidian",
