@@ -61,12 +61,12 @@ class QuestionTypeMultiLineBasic implements IQuestionTypeHandler {
     expand(questionText: string, settings: SRSettings): CardFrontBack[] {
         // We don't need to worry about "\r\n", as multi line questions processed by parse() concatenates lines explicitly with "\n"
         const questionLines = questionText.split("\n");
-        
+
         // 检查是否是 Logseq 格式 (包含 #flashcard 标签)
         if (questionLines[0] && /#flashcard\b/i.test(questionLines[0])) {
             return this.expandLogseqFormat(questionLines);
         }
-        
+
         // 原有的多行格式处理
         const lineIdx = findLineIndexOfSearchStringIgnoringWs(
             questionLines,
@@ -78,7 +78,7 @@ class QuestionTypeMultiLineBasic implements IQuestionTypeHandler {
         const result: CardFrontBack[] = [new CardFrontBack(side1, side2)];
         return result;
     }
-    
+
     /**
      * 处理 Logseq 格式的闪卡
      * 格式: - question #flashcard
@@ -88,12 +88,12 @@ class QuestionTypeMultiLineBasic implements IQuestionTypeHandler {
      */
     private expandLogseqFormat(questionLines: string[]): CardFrontBack[] {
         // 第一行是问题（移除 #flashcard 标签和列表标记）
-        let front = questionLines[0]
-            .replace(/^\s*-\s+/, '')  // 移除列表标记
-            .replace(/#flashcard\b/gi, '')  // 移除 #flashcard 标签
-            .replace(/<!--SR:.*?-->/g, '')  // 移除 SR 调度信息
+        const front = questionLines[0]
+            .replace(/^\s*-\s+/, "") // 移除列表标记
+            .replace(/#flashcard\b/gi, "") // 移除 #flashcard 标签
+            .replace(/<!--SR:.*?-->/g, "") // 移除 SR 调度信息
             .trim();
-        
+
         // 剩余行是答案（移除 SR 调度信息和列表标记）
         const answerLines: string[] = [];
         for (let i = 1; i < questionLines.length; i++) {
@@ -103,12 +103,12 @@ class QuestionTypeMultiLineBasic implements IQuestionTypeHandler {
             // 跳过空行
             if (line.trim().length === 0) continue;
             // 移除列表标记并保留内容
-            const cleanedLine = line.replace(/^\s*-\s+/, '  ').trimEnd();
+            const cleanedLine = line.replace(/^\s*-\s+/, "  ").trimEnd();
             answerLines.push(cleanedLine);
         }
-        
+
         const back = answerLines.join("\n").trim();
-        
+
         const result: CardFrontBack[] = [new CardFrontBack(front, back)];
         return result;
     }

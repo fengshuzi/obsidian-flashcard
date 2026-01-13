@@ -191,24 +191,24 @@ export function parse(text: string, options: ParserOptions): ParsedQuestionInfo[
             while (i + 1 < lines.length) {
                 const nextLine = lines[i + 1];
                 const nextTrimmed = nextLine.trim();
-                
+
                 // 空行结束
                 if (nextTrimmed.length === 0) break;
-                
+
                 // SR 调度信息
                 if (nextLine.includes("<!--SR:")) {
                     cardText += "\n" + nextLine;
                     i++;
                     continue;
                 }
-                
+
                 // 检查是否是子项（缩进更深）或者是同级/更浅的项
                 const nextIndent = getLogseqIndentLevel(nextLine);
                 if (nextIndent <= questionIndent && isLogseqListItem(nextLine)) {
                     // 同级或更浅的列表项，结束当前卡片
                     break;
                 }
-                
+
                 // 子项或续行，添加到卡片内容
                 cardText += "\n" + nextLine;
                 i++;
