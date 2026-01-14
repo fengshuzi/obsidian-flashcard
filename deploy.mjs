@@ -41,11 +41,11 @@ const VAULTS = [
     },
 ];
 
-// 需要复制的文件（从 build 目录和根目录）
+// 需要复制的文件（都从 dist 目录）
 const FILES_TO_COPY = [
-    { src: "build/main.js", dest: "main.js" },
-    { src: "manifest.json", dest: "manifest.json" },
-    { src: "styles.css", dest: "styles.css" },
+    { src: "dist/main.js", dest: "main.js" },
+    { src: "dist/manifest.json", dest: "manifest.json" },
+    { src: "dist/styles.css", dest: "styles.css" },
 ];
 
 console.log("📦 开始部署 Obsidian Flashcard 插件到所有 vaults...\n");
