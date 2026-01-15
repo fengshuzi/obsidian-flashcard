@@ -1,9 +1,0 @@
-{
-    "id": "obsidian-flashcard",
-    "name": "Flashcard",
-    "version": "1.0.0",
-    "minAppVersion": "1.2.8",
-    "description": "Flashcard review plugin with Logseq #flashcard format support.",
-    "author": "Modified from obsidian-spaced-repetition",
-    "isDesktopOnly": false
-}
