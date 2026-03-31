@@ -44,3 +44,14 @@ Fight the forgetting curve by reviewing flashcards & notes using spaced repetiti
 Check the [documentation](https://www.stephenmwangi.com/obsidian-spaced-repetition/) for more details.
 
 <a href='https://ko-fi.com/M4M44DEN6' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
+---
+
+## ☕ 请作者喝杯咖啡
+
+如果这个插件帮助了你，欢迎扫码打赏，感谢支持！
+
+<div align="center">
+  <img src="./assets/wechat-donate.jpg" alt="微信打赏" width="200" />
+  <p><sub>微信扫码打赏</sub></p>
+</div>
