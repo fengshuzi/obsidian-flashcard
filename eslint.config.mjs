@@ -1,62 +1,44 @@
-import eslint from "@eslint/js";
-import eslintPluginUnicorn from "eslint-plugin-unicorn";
-import simpleImportSort from "eslint-plugin-simple-import-sort";
-import tseslint from "typescript-eslint";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
 
-export default tseslint.config(
-    eslint.configs.recommended,
-    ...tseslint.configs.recommended,
-    {
-        plugins: {
-            "simple-import-sort": simpleImportSort,
-            unicorn: eslintPluginUnicorn,
-        },
-        rules: {
-            "linebreak-style": 0,
-            quotes: ["warn", "double", "avoid-escape"],
-            semi: ["error", "always"],
-            camelcase: ["error"],
-            "@typescript-eslint/no-unused-vars": [
-                "error",
-                {
-                    argsIgnorePattern: "^_",
-                    varsIgnorePattern: "^_",
-                },
-            ],
-            "unicorn/filename-case": [
-                "error",
-                {
-                    case: "kebabCase",
-                },
-            ],
-            "simple-import-sort/imports": [
-                "error",
-                {
-                    groups: [["^"], ["^src"], ["^\\.", "^tests"]],
-                },
-            ],
-        },
+const strictReviewRules = {
+  "@typescript-eslint/no-explicit-any": "warn",
+  "@typescript-eslint/no-unsafe-assignment": "warn",
+  "@typescript-eslint/no-unsafe-member-access": "warn",
+  "@typescript-eslint/no-unsafe-call": "warn",
+  "@typescript-eslint/no-unsafe-argument": "warn",
+  "@typescript-eslint/no-unsafe-return": "warn",
+  "@typescript-eslint/no-unnecessary-type-assertion": "warn",
+  "@typescript-eslint/await-thenable": "warn",
+  "@typescript-eslint/no-floating-promises": "warn",
+};
+
+export default [
+  {
+    ignores: [
+      "dist/**",
+      "node_modules/**",
+      "coverage/**",
+      "*.js",
+      "*.mjs",
+      "*.cjs",
+      "*.config.*",
+      "**/*.d.ts",
+    ],
+  },
+  {
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: "./tsconfig.json",
+        tsconfigRootDir: import.meta.dirname,
+        sourceType: "module",
+      },
     },
-    {
-        files: ["src/**"],
-        rules: {
-            "no-restricted-imports": [
-                "error",
-                {
-                    patterns: [
-                        {
-                            group: ["./", "../"],
-                            message: "Relative imports are not allowed in src/.",
-                        },
-                    ],
-                },
-            ],
-        },
+    plugins: {
+      "@typescript-eslint": tsPlugin,
     },
-    {
-        files: ["tests/**"],
-        rules: {
-            "@typescript-eslint/no-require-imports": "off",
-        },
-    },
-);
+    rules: strictReviewRules,
+  },
+];

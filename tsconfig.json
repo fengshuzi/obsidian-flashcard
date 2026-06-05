@@ -1,22 +1,38 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./",
-        "paths": {
-            "src/*": ["src/*"]
-        },
-        "inlineSourceMap": true,
-        "inlineSources": true,
-        "module": "ESNext",
-        "target": "ES2018",
-        "allowJs": true,
-        "noImplicitAny": true,
-        "moduleResolution": "node",
-        "esModuleInterop": true,
-        "importHelpers": true,
-        "lib": ["dom", "dom.Iterable", "scripthost", "ES5", "ES6", "ES7", "ES2021"],
-        "jsx": "react",
-        "jsxFactory": "h"
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "src/*": [
+        "src/*"
+      ]
     },
-    "include": ["**/*.ts", "**/*.tsx"],
-    "files": ["node_modules/jest-expect-message/types/index.d.ts"]
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "module": "ESNext",
+    "target": "ES2018",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "lib": [
+      "dom",
+      "dom.Iterable",
+      "scripthost",
+      "ES5",
+      "ES6",
+      "ES7",
+      "ES2021"
+    ],
+    "jsx": "react",
+    "jsxFactory": "h",
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "files": [
+    "node_modules/jest-expect-message/types/index.d.ts"
+  ]
 }
