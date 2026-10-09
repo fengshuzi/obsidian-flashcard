@@ -5,7 +5,7 @@ import { homedir } from "os";
 // 定义基础路径
 const BASE_PATH = join(
     homedir(),
-    "Library/Mobile Documents/iCloud~md~obsidian/Documents/漂泊者及其影子",
+    "漂泊者及其影子",
 );
 
 const NOTE_DEMO_PATH = join(
@@ -16,24 +16,8 @@ const NOTE_DEMO_PATH = join(
 // 定义目标 vault 配置目录
 const VAULTS = [
     {
-        name: "Mobile",
-        path: join(BASE_PATH, ".obsidian-mobile/plugins/obsidian-flashcard"),
-    },
-    {
-        name: "Pro",
-        path: join(BASE_PATH, ".obsidian-pro/plugins/obsidian-flashcard"),
-    },
-    {
-        name: "iPad",
-        path: join(BASE_PATH, ".obsidian-ipad/plugins/obsidian-flashcard"),
-    },
-    {
-        name: "2017",
-        path: join(BASE_PATH, ".obsidian-2017/plugins/obsidian-flashcard"),
-    },
-    {
-        name: "Zhang",
-        path: join(BASE_PATH, ".obsidian-zhang/plugins/obsidian-flashcard"),
+        name: "Main",
+        path: join(BASE_PATH, ".obsidian/plugins/obsidian-flashcard"),
     },
     {
         name: "Note-Demo",
@@ -91,7 +75,7 @@ VAULTS.forEach((vault) => {
     console.log("");
 });
 
-console.log("🎉 部署完成！已部署到 6 个 vaults");
+console.log("🎉 部署完成！已部署到 2 个 vaults");
 console.log("\n💡 提示: 在 Obsidian 中重新加载插件以查看更改");
 console.log("   - 打开命令面板 (Cmd/Ctrl + P)");
 console.log('   - 搜索 "Reload app without saving"');
